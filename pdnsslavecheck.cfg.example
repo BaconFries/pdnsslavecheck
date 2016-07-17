@@ -1,0 +1,16 @@
+title = "Check SOA Config"
+
+[powerdns]
+api = "https://powerdns.server/api/v1/servers/localhost/zones"
+apikey = "p4ssw0rd"
+master = "10.20.30.40"
+
+[slaves]
+servers = [ "1.1.1.1", "2.2.2.2" ]
+
+[redisconf]
+keyprefix = "slavecheck"
+server = "redis.server:6379"
+password = ""
+db = 0
+expire_sec = 120
