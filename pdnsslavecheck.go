@@ -43,10 +43,12 @@ func checksoa(wg *sync.WaitGroup, name string, config tomlConfig, redisclient *r
 	o.Domain	=  qname
 	o.Master_serial	=  ms
 	swg := new(sync.WaitGroup)
-	for _, slaveserver := range config.Slaves.Servers {
+	for i := range config.Slaves.Servers {
 		swg.Add(1)
+		slaveserver := config.Slaves.Servers[i]
 		go func() {
 			defer swg.Done()
+			log.Println(qname +" "+ slaveserver)
 			ds		:= getserial( qname, slaveserver )
 			n		:= Nameservers{}
 			n.Nameserver	=  slaveserver
