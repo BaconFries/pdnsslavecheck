@@ -23,6 +23,7 @@ type redisconf struct {
 	Password	string
 	DB		int
 	Expire_sec	int
+	Delay_sec	int
 }
 
 type Input struct {
@@ -42,7 +43,9 @@ type Output struct {
 	Master_serial	uint32		`json:"master_serial"`
 	Percent		float64		`json:"percent"`
 	Count		int		`json:"count"`
+	Total		int		`json:"total"`
 	Domain		string		`json:"domain"`
+	LastCheck	int32	`json:"last_check"`
 	Nameservers	[]Nameservers	`json:"nameservers"`
 }
 
@@ -50,4 +53,5 @@ type Nameservers struct {
 	Nameserver	string	`json:"nameserver"`
 	Serial		uint32	`json:"serial"`
 	Match_master	bool	`json:"match_master"`
+	LastCheck	int32	`json:"last_check"`
 }
